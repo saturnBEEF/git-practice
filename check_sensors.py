@@ -23,7 +23,11 @@ calibrations = pd.read_csv("data/calibrations.csv")
 joined_sen_cal = pd.merge(sensors, calibrations, on="sensor_id")
 print(joined_sen_cal)
 
-# Filter sensors that are overdue for calibration and write it to a JSON file
-overdue_sensors = joined_sen_cal[joined_sen_cal["days_since_calibration"] > max_days]
+# Filter sensors that are overdue for calibration
+overdue_sensors = joined_sen_cal[
+    joined_sen_cal["days_since_calibration"] > max_days
+    ].to_dict(orient="records")
+
+# Write the overdue sensors to a JSON file
 with open(output_path, "w") as file:
-    json.dump(overdue_sensors.to_dict(orient="records"), file, indent=2)
+    json.dump(overdue_sensors, file, indent=2)
