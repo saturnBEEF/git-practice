@@ -1,0 +1,83 @@
+Conversation summary
+Here are the main questions you asked, with a short summary of the answers:
+
+“What does this do? config = yaml.safe_load(file)”
+It reads a YAML file and turns it into a Python dictionary or list.
+
+“yaml is not defined, does it need a package installed?”
+Yes, you usually need to import it:
+    import yaml
+
+and install PyYAML if missing.
+“what about xlsx file”
+.xlsx is an Excel file, not YAML, so it needs a library like pandas with openpyxl or openpyxl directly.
+
+“Can we use pandas instead”
+Yes, for Excel files:
+    pd.read_excel("file.xlsx")
+
+but not for YAML directly.
+
+“can pandas read yamal”
+Not directly. Use yaml.safe_load() first.
+
+“Do we need any packages to read and write as JSON array”
+No extra package is required; Python’s built-in json module is enough.
+
+“What is json.dump”
+It writes a Python object to a file in JSON format.
+
+“I just overwriitten the file, is it possible to revert it?”
+Yes, if it was tracked in Git you can restore the previous version.
+
+“Ive got the original file, how do I write something to the file without deleting what is already stored?”
+Use append mode "a" or load the data, update it, then write back.
+
+“ParserError ... while parsing a block mapping”
+The YAML had invalid formatting; extra text was appended to the config, breaking syntax.
+
+“What is a formatted json array?”
+A JSON list with pretty spacing and line breaks for readability.
+
+“How can i .dump it on different line?”
+Use:
+    json.dump(data, file, indent=2)
+
+“I want to append overdue_sensor into config file and then to the file inside the config”
+Best practice is to keep config YAML for settings only and write sensor alerts to a separate JSON file named in the config.
+
+“with this: with open("data/config.yml") as file: config = yaml.safe_load(file) Have i read and gotten max_days_since_calibration and output_file?”
+Yes, if those keys exist in the YAML file.
+
+“what does this part do? orient="records"”
+It converts a DataFrame row-by-row into a list of dictionaries for JSON output.
+
+“I want the json to be created inside git-practice. How can I do that, now it is outside”
+Use a path relative to the script location with Path(__file__).parent.
+
+“explain the merging a bit more: .merge(sensors, calibrations, on="sensor_id"”
+It joins the two tables using a shared sensor_id key.
+
+“explain what (file) do”
+It gives the path of the current script.
+
+“Concerning pep8 how should the import be best set up?”
+Standard library imports first, blank line, then third-party imports.
+
+“Should there be an empty line at the top?”
+No. Start the file at line 1.
+
+“Should author information be added?”
+Not required by PEP 8 unless the assignment or project demands it.
+
+“Could I make overdue_sensors a list before with open section?”
+Yes; convert the filtered DataFrame to a list of dicts first.
+
+“Why cant I stage the new changes in my script+”
+Usually because it was not opened from the correct Git repository or because VS Code was displaying the wrong Source Control view.
+
+“check_sensors.py does not show at all in changes, even though it is modified”
+It was staged; it appears under Staged Changes, not Changes.
+
+“Could you list the questions I have asked you and give a short summary of our conversation?”
+This is the summary you requested.
