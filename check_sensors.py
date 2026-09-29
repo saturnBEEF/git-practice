@@ -2,6 +2,9 @@ import pandas as pd
 from pathlib import Path
 import yaml
 import json
+##################################################
+# Comments have been proofread and edited with AI
+##################################################
 
 # Load configuration from YAML file
 # Create a Path object for the config file
